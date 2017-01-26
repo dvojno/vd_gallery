@@ -168,6 +168,12 @@ this.showImage = function(index){
 
     this.cont.appendChild(this.btnClose);
 
+    if(i-1 < 0){
+      indexToAdd = self.imagesArr.length - 1;
+    }else{
+      indexToAdd = i-1;
+    }
+
     this.btnLeft = document.createElement('div');
     this.btnLeft.style.position = 'absolute';
     this.btnLeft.innerHTML = '<';
@@ -177,9 +183,15 @@ this.showImage = function(index){
     this.btnLeft.style.color = '#fff';
     this.btnLeft.style.cursor = 'pointer';
     this.btnLeft.id = i;
-    this.btnLeft.addEventListener('click',function(){self.showImage(this.id-1)});
+    this.btnLeft.addEventListener('click',function(){self.showImage(indexToAdd)});
 
     this.cont.appendChild(this.btnLeft);
+
+    if(i+1 >= self.imagesArr.length){
+      indexToAdd = 0;
+    }else{
+      indexToAdd = i+1;
+    }
 
     this.btnRight = document.createElement('div');
     this.btnRight.style.position = 'absolute';
@@ -190,7 +202,7 @@ this.showImage = function(index){
     this.btnRight.style.color = '#fff';
     this.btnRight.style.cursor = 'pointer';
     this.btnRight.id = i;
-    this.btnRight.addEventListener('click',function(){self.showImage(this.id+1)});
+    this.btnRight.addEventListener('click',function(){self.showImage(indexToAdd)});
 
     this.cont.appendChild(this.btnRight);
 
